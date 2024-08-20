@@ -36,12 +36,12 @@ public class TodoServiceImp implements TodoService {
     @Override
     public ApiResponse updateTodo(Integer id, Todo t) {
         try {
-            if (!id.equals(t.getId())) {
-                throw new TodoNotFoundException("Todo id must be the same");
-            }
             Todo todo = todoRepository.findById(id).orElseThrow(() ->
-                    new TodoNotFoundException("Todo not found with id: " + id) // handled by exception
+                    new TodoNotFoundException("Todo not found with ID :: " + id)
             );
+            if (!id.equals(t.getId())) {
+                throw new TodoNotFoundException("Todo ID must be the same");
+            }
             todo.setId(t.getId());
             todo.setTodo(t.getTodo());
             todo.setCompleted(t.isCompleted());
@@ -59,7 +59,7 @@ public class TodoServiceImp implements TodoService {
     @Override
     public ApiResponse deleteTodo(Integer id) {
         if (!todoRepository.existsById(id)) {
-            throw new TodoNotFoundException("Todo not found with id :: " + id); // normal way of giving exception
+            throw new TodoNotFoundException("Todo not found with ID :: " + id); // normal way of giving exception
         }
         todoRepository.deleteById(id);
         return new ApiResponse(

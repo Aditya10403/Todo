@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(TodoNotFoundException.class)
-    public ResponseEntity<ApiError> handleEmployeeNotFoundException(TodoNotFoundException ex) {
+    public ResponseEntity<ApiError> handleTodoNotFoundException(TodoNotFoundException ex) {
         ApiError error = new ApiError(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage()
