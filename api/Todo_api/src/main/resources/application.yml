@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Todo_api
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    url:  jdbc:mysql://localhost:3306/sb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+
+server:
+  port: 8085
+
